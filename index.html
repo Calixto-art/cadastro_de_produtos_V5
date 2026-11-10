@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque - POO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="cabecalho">
+            <h1>Cadastro de Produtos</h1>
+            <button type="button" id="btn-bootstrap" class="btn-bootstrap">Ver Conceito Bootstrap</button>
+        </header>
+
+        <!-- Formulário de Entrada -->
+        <form id="produto-form" novalidate>
+            <div class="form-group">
+                <label for="nome">Nome do produto:</label>
+                <input type="text" id="nome" placeholder="Ex. Notebook"/>
+            </div>
+
+            <div class="form-group">
+                <label for="preco">Preço (R$):</label>
+                <input type="number" id="preco" step="0.01" placeholder="Ex. 3500.00"/>
+            </div>
+
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" placeholder="Ex. 5"/>
+            </div>
+
+            <!-- V5: mensagem de erro inline (substitui alert) -->
+            <div id="mensagem-erro" class="mensagem-erro" role="alert" hidden></div>
+
+            <div class="botoes-formulario">
+                <button type="submit" class="btn-primary" id="btn-salvar">Adicionar Produto</button>
+                <button type="button" class="btn-cancelar" id="btn-cancelar" hidden>Cancelar edição</button>
+            </div>
+        </form>
+
+        <!-- Cabeçalho de Ações e Resumo -->
+        <div class="resumo-container">
+            <h3 id="total-estoque">Total em Estoque: R$0,00</h3>
+            <button id="limpar-tabela" class="btn-danger">Limpar</button>
+        </div>
+
+        <!-- Campo de Pesquisa -->
+        <div class="busca-container">
+            <input type="text" id="campo-busca" placeholder="🔍 Pesquisar produto pelo nome..." />
+        </div>
+
+        <!-- Tabela de Exibição -->
+        <table id="tabela-produtos">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                    <th>Subtotal</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas da tabela serão inseridas através do JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- V5: aviso temporário (confirmações de sucesso e informações) -->
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <!-- V5: modal de confirmação (substitui confirm) -->
+    <div id="modal-confirmacao" class="modal-overlay" hidden>
+        <div class="modal" role="dialog" aria-modal="true"
+             aria-labelledby="modal-confirmacao-titulo" aria-describedby="modal-confirmacao-texto">
+            <h2 id="modal-confirmacao-titulo"></h2>
+            <p id="modal-confirmacao-texto"></p>
+            <div class="modal-acoes">
+                <button type="button" id="modal-btn-cancelar" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="modal-btn-confirmar" class="btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- V5: modal "Conceito Bootstrap" (conteúdo montado pelo JS) -->
+    <div id="modal-bootstrap" class="modal-overlay" hidden>
+        <div class="modal modal-largo" role="dialog" aria-modal="true" aria-labelledby="modal-bootstrap-titulo">
+            <h2 id="modal-bootstrap-titulo"></h2>
+            <div id="modal-bootstrap-corpo" class="modal-corpo"></div>
+            <div class="modal-acoes">
+                <button type="button" id="modal-bootstrap-fechar" class="btn-primary">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
